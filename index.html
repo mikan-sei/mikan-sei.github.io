@@ -3,552 +3,350 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="Research & Development Portfolio" />
   <title>Portfolio | Your Name</title>
-
-  <!-- OpenGraph -->
-  <meta property="og:title" content="Portfolio | Your Name" />
-  <meta property="og:description" content="Research & Development Projects, Publications, Skills." />
-  <meta property="og:type" content="website" />
-
+  <meta name="description" content="Landing page + About + Experience" />
   <style>
     :root{
-      --bg: #0b0f14;
-      --panel: rgba(255,255,255,0.06);
-      --panel2: rgba(255,255,255,0.09);
-      --text: rgba(255,255,255,0.92);
-      --muted: rgba(255,255,255,0.68);
-      --line: rgba(255,255,255,0.14);
-      --accent: #79b8ff;
+      --bg:#0b0f14;
+      --panel:rgba(255,255,255,.06);
+      --panel2:rgba(255,255,255,.08);
+      --text:rgba(255,255,255,.92);
+      --muted:rgba(255,255,255,.70);
+      --line:rgba(255,255,255,.14);
+      --accent:#79b8ff;
       --accent2:#7ee787;
-      --warn:#ffab70;
-      --shadow: 0 12px 50px rgba(0,0,0,0.35);
-      --r: 18px;
-      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      --shadow:0 12px 50px rgba(0,0,0,.35);
+      --r:18px;
+      --mono:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans:ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
     }
     *{ box-sizing:border-box; }
-    html,body{ height:100%; }
+    html{ scroll-behavior:smooth; }
     body{
       margin:0;
-      font-family: var(--sans);
-      color: var(--text);
+      font-family:var(--sans);
+      color:var(--text);
       background:
         radial-gradient(1200px 800px at 10% 0%, rgba(121,184,255,0.20), transparent 55%),
         radial-gradient(900px 700px at 90% 20%, rgba(126,231,135,0.18), transparent 50%),
-        radial-gradient(1200px 1000px at 50% 120%, rgba(255,171,112,0.10), transparent 55%),
         var(--bg);
-      line-height:1.6;
+      line-height:1.65;
     }
-    a{ color: var(--accent); text-decoration:none; }
-    a:hover{ text-decoration: underline; }
-    .container{
-      max-width: 1080px;
-      margin: 0 auto;
-      padding: 28px 18px 80px;
-    }
+    a{ color:var(--accent); text-decoration:none; }
+    a:hover{ text-decoration:underline; }
 
-    /* Top bar */
+    /* Top banner */
     .topbar{
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      backdrop-filter: blur(14px);
-      background: rgba(11,15,20,0.55);
-      border-bottom: 1px solid var(--line);
+      position:sticky; top:0; z-index:20;
+      backdrop-filter:blur(14px);
+      background:rgba(11,15,20,.55);
+      border-bottom:1px solid var(--line);
     }
     .topbar-inner{
-      max-width:1080px;
+      max-width:1020px;
       margin:0 auto;
-      padding: 12px 18px;
+      padding:12px 16px;
       display:flex;
       align-items:center;
       justify-content:space-between;
       gap:12px;
     }
     .brand{
-      display:flex; gap:10px; align-items:center;
-      min-width: 180px;
+      display:flex; align-items:center; gap:10px;
+      min-width:180px;
     }
     .avatar{
-      width:36px; height:36px; border-radius: 12px;
-      background: linear-gradient(135deg, rgba(121,184,255,.9), rgba(126,231,135,.8));
-      box-shadow: var(--shadow);
+      width:34px; height:34px; border-radius:12px;
+      background:linear-gradient(135deg, rgba(121,184,255,.9), rgba(126,231,135,.8));
+      box-shadow:var(--shadow);
       flex:0 0 auto;
     }
-    .brand b{ font-size: 14px; letter-spacing: .2px; }
-    .brand span{ color: var(--muted); font-size: 12px; display:block; margin-top:-2px; }
-    nav{
-      display:flex; flex-wrap:wrap;
-      gap:10px;
-      justify-content:flex-end;
-    }
+    .brand b{ font-size:14px; letter-spacing:.2px; }
+    .brand span{ display:block; margin-top:-2px; font-size:12px; color:var(--muted); }
+
+    nav{ display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end; }
     .navlink{
-      font-size: 13px;
-      color: var(--muted);
-      padding: 7px 10px;
-      border-radius: 999px;
-      border: 1px solid transparent;
+      font-size:13px;
+      color:var(--muted);
+      padding:7px 10px;
+      border-radius:999px;
+      border:1px solid transparent;
     }
     .navlink:hover{
-      border-color: var(--line);
-      color: var(--text);
+      color:var(--text);
+      border-color:var(--line);
+      background:rgba(255,255,255,.04);
       text-decoration:none;
-      background: rgba(255,255,255,0.04);
     }
 
-    /* Hero */
-    .hero{
-      display:grid;
-      grid-template-columns: 1.4fr .9fr;
-      gap: 18px;
-      margin-top: 22px;
-      align-items: stretch;
+    .container{
+      max-width:1020px;
+      margin:0 auto;
+      padding:24px 16px 70px;
     }
-    @media (max-width: 900px){
-      .hero{ grid-template-columns: 1fr; }
-      .brand{ min-width: unset; }
-    }
+
     .card{
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: var(--r);
-      box-shadow: var(--shadow);
+      background:var(--panel);
+      border:1px solid var(--line);
+      border-radius:var(--r);
+      box-shadow:var(--shadow);
     }
-    .hero-main{ padding: 22px; }
-    .hero-main h1{
-      margin: 0 0 8px;
-      font-size: clamp(22px, 3.2vw, 34px);
-      letter-spacing: .2px;
-      line-height: 1.25;
+
+    /* Landing (minimal) */
+    .landing{
+      padding:22px;
+      margin-top:18px;
     }
-    .hero-main p{
-      margin: 0 0 14px;
-      color: var(--muted);
-      max-width: 70ch;
+    .landing h1{
+      margin:0 0 8px;
+      font-size:clamp(22px, 3.0vw, 34px);
+      line-height:1.25;
+      letter-spacing:.2px;
     }
-    .chips{ display:flex; flex-wrap:wrap; gap:8px; margin-top: 10px; }
-    .chip{
-      font-size: 12px;
-      padding: 6px 10px;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.03);
-      color: var(--text);
+    .landing p{
+      margin:0 0 14px;
+      color:var(--muted);
+      max-width:72ch;
     }
-    .chip b{ color: var(--accent2); font-weight: 600; }
-    .hero-side{
-      padding: 18px;
-      display:flex;
-      flex-direction:column;
-      gap: 12px;
-    }
-    .quick{
-      padding: 14px;
-      border-radius: 14px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid var(--line);
-    }
-    .quick h3{ margin:0 0 8px; font-size: 13px; color: var(--muted); font-weight: 600; }
-    .quick .row{
-      display:flex; gap:10px; flex-wrap:wrap; align-items:center;
-      font-size: 13px;
-    }
-    .btns{ display:flex; gap:10px; flex-wrap:wrap; margin-top: 10px; }
+    .actions{ display:flex; gap:10px; flex-wrap:wrap; margin-top:10px; }
     .btn{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding: 10px 12px;
-      border-radius: 12px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.04);
-      color: var(--text);
-      font-size: 13px;
-      text-decoration:none;
+      display:inline-flex; align-items:center; gap:8px;
+      padding:10px 12px;
+      border-radius:12px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.04);
+      color:var(--text);
+      font-size:13px;
       cursor:pointer;
+      text-decoration:none;
     }
-    .btn:hover{ background: rgba(255,255,255,0.06); text-decoration:none; }
+    .btn:hover{ background:rgba(255,255,255,.06); text-decoration:none; }
     .btn.primary{
-      border-color: rgba(121,184,255,0.35);
-      background: rgba(121,184,255,0.12);
+      border-color:rgba(121,184,255,.35);
+      background:rgba(121,184,255,.12);
     }
-    .btn code{
-      font-family: var(--mono);
-      font-size: 12px;
-      color: rgba(255,255,255,0.85);
+    .btn code{ font-family:var(--mono); font-size:12px; opacity:.9; }
+
+    .chips{ display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
+    .chip{
+      font-size:12px;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.03);
+      color:var(--text);
+      white-space:nowrap;
     }
+    .chip b{ color:var(--accent2); font-weight:600; }
 
     /* Sections */
-    section{ margin-top: 18px; }
+    section{ margin-top:22px; }
     .section-head{
       display:flex;
       align-items:flex-end;
       justify-content:space-between;
-      gap: 12px;
-      margin: 26px 0 10px;
+      gap:12px;
+      margin:22px 0 10px;
     }
-    .section-head h2{
-      margin:0;
-      font-size: 16px;
-      letter-spacing:.2px;
-    }
-    .section-head p{
-      margin:0;
-      color: var(--muted);
-      font-size: 13px;
-    }
+    .section-head h2{ margin:0; font-size:16px; letter-spacing:.2px; }
+    .section-head p{ margin:0; color:var(--muted); font-size:13px; }
 
-    /* Filters */
-    .filters{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      justify-content:flex-end;
-      align-items:center;
+    /* About layout (light) */
+    .about{
+      padding:16px;
     }
-    .input, select{
-      font-family: var(--sans);
-      font-size: 13px;
-      color: var(--text);
-      background: rgba(255,255,255,0.04);
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      padding: 9px 10px;
-      outline:none;
-    }
-    .input::placeholder{ color: rgba(255,255,255,0.45); }
-    select{ padding-right: 30px; }
-
-    /* Project grid */
-    .grid{
+    .about-grid{
       display:grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 12px;
-    }
-    .project{
-      grid-column: span 6;
-      padding: 16px;
-      border-radius: var(--r);
-      border: 1px solid var(--line);
-      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
-      position:relative;
-      overflow:hidden;
-      min-height: 168px;
-    }
-    .project::before{
-      content:"";
-      position:absolute; inset:-40px -40px auto auto;
-      width: 160px; height: 160px;
-      background: radial-gradient(circle at 30% 30%, rgba(121,184,255,0.28), transparent 62%);
-      transform: rotate(12deg);
-      pointer-events:none;
+      grid-template-columns: 1.2fr .8fr;
+      gap:12px;
     }
     @media (max-width: 860px){
-      .project{ grid-column: span 12; }
+      .about-grid{ grid-template-columns:1fr; }
     }
-    .proj-top{
-      display:flex;
-      align-items:flex-start;
-      justify-content:space-between;
-      gap: 10px;
+    .panel{
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.03);
+      border-radius:14px;
+      padding:14px;
     }
-    .project h3{
-      margin:0;
-      font-size: 15px;
+    .panel h3{
+      margin:0 0 8px;
+      font-size:13px;
+      color:rgba(255,255,255,.82);
       letter-spacing:.2px;
     }
-    .meta{
-      font-size: 12px;
-      color: var(--muted);
-      margin-top: 2px;
+    .panel ul{ margin:0; padding-left:18px; color:var(--muted); font-size:13px; }
+    .panel p{ margin:0; color:var(--muted); font-size:13px; }
+
+    /* Experience (compact cards) */
+    .xp{
+      padding:16px;
     }
-    .badges{
+    .xp-list{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:10px;
+    }
+    .xp-item{
+      border:1px solid var(--line);
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border-radius:14px;
+      padding:12px 12px;
       display:flex;
-      gap:6px;
-      flex-wrap:wrap;
-      justify-content:flex-end;
-      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      align-items:flex-start;
     }
-    .badge{
-      font-family: var(--mono);
-      font-size: 11px;
-      padding: 5px 8px;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      background: rgba(0,0,0,0.18);
-      color: rgba(255,255,255,0.82);
+    .xp-left b{ display:block; font-size:14px; letter-spacing:.2px; }
+    .xp-left span{ display:block; color:var(--muted); font-size:12px; margin-top:2px; }
+    .xp-right{
+      display:flex; gap:6px; flex-wrap:wrap; justify-content:flex-end;
+      max-width: 45%;
+    }
+    @media (max-width: 860px){
+      .xp-item{ flex-direction:column; }
+      .xp-right{ max-width:100%; justify-content:flex-start; }
+    }
+    .tag{
+      font-family:var(--mono);
+      font-size:11px;
+      padding:5px 8px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(0,0,0,.16);
+      color:rgba(255,255,255,.82);
       white-space:nowrap;
     }
-    .badge.accent{ border-color: rgba(121,184,255,0.35); color: rgba(179,220,255,0.95); }
-    .badge.green{ border-color: rgba(126,231,135,0.35); color: rgba(188,255,202,0.95); }
-    .badge.warn{ border-color: rgba(255,171,112,0.35); color: rgba(255,220,198,0.95); }
+    .tag.accent{ border-color:rgba(121,184,255,.35); color:rgba(179,220,255,.95); }
+    .tag.green{ border-color:rgba(126,231,135,.35); color:rgba(188,255,202,.95); }
 
-    .project p{
-      margin: 10px 0 0;
-      color: var(--muted);
-      font-size: 13px;
-      max-width: 90ch;
-    }
-    .proj-links{
-      display:flex;
-      gap: 10px;
-      flex-wrap:wrap;
-      margin-top: 12px;
-    }
-    .mini{
-      font-size: 12px;
-      padding: 7px 10px;
-      border-radius: 12px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.03);
-      color: var(--text);
-      text-decoration:none;
-      cursor:pointer;
-    }
-    .mini:hover{ background: rgba(255,255,255,0.05); text-decoration:none; }
-
-    /* Timeline */
-    .timeline{
-      padding: 16px;
-    }
-    .tl-item{
-      display:grid;
-      grid-template-columns: 130px 1fr;
-      gap: 14px;
-      padding: 12px 0;
-      border-top: 1px solid var(--line);
-    }
-    .tl-item:first-child{ border-top: none; padding-top: 2px; }
-    .when{ font-family: var(--mono); font-size: 12px; color: rgba(255,255,255,0.72); }
-    .what b{ display:block; font-size: 14px; }
-    .what span{ color: var(--muted); font-size: 13px; }
-
-    /* Footer */
     footer{
-      margin-top: 30px;
-      padding-top: 18px;
-      border-top: 1px solid var(--line);
-      color: var(--muted);
-      font-size: 12px;
+      margin-top:28px;
+      padding-top:16px;
+      border-top:1px solid var(--line);
+      color:var(--muted);
+      font-size:12px;
       display:flex;
       justify-content:space-between;
       flex-wrap:wrap;
-      gap: 10px;
+      gap:10px;
     }
     .kbd{
-      font-family: var(--mono);
-      border: 1px solid var(--line);
-      padding: 2px 7px;
-      border-radius: 9px;
-      background: rgba(255,255,255,0.03);
-      color: rgba(255,255,255,0.78);
-    }
-
-    /* Modal */
-    dialog{
-      width: min(860px, 92vw);
-      border: 1px solid var(--line);
-      border-radius: var(--r);
-      background: rgba(12,16,22,0.92);
-      color: var(--text);
-      box-shadow: var(--shadow);
-      padding: 0;
-      overflow:hidden;
-    }
-    dialog::backdrop{
-      background: rgba(0,0,0,0.55);
-      backdrop-filter: blur(2px);
-    }
-    .modal-head{
-      padding: 14px 16px;
-      border-bottom: 1px solid var(--line);
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap: 10px;
-      background: rgba(255,255,255,0.03);
-    }
-    .modal-head b{ font-size: 14px; }
-    .modal-body{
-      padding: 14px 16px 16px;
-    }
-    .modal-body p{ margin: 0 0 12px; color: var(--muted); }
-    .dl{
-      display:grid;
-      grid-template-columns: 160px 1fr;
-      gap: 8px 12px;
-      font-size: 13px;
-      margin-top: 8px;
-    }
-    .dl div{ padding: 7px 10px; border: 1px solid var(--line); border-radius: 12px; background: rgba(255,255,255,0.03); }
-    .dl .k{ color: rgba(255,255,255,0.78); font-family: var(--mono); }
-    .dl .v{ color: rgba(255,255,255,0.92); }
-    .close{
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.04);
-      color: var(--text);
-      border-radius: 12px;
-      padding: 8px 10px;
-      cursor:pointer;
-      font-size: 13px;
-    }
-    .close:hover{ background: rgba(255,255,255,0.06); }
-    .sr-only{
-      position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;
+      font-family:var(--mono);
+      border:1px solid var(--line);
+      padding:2px 7px;
+      border-radius:9px;
+      background:rgba(255,255,255,.03);
+      color:rgba(255,255,255,.78);
     }
   </style>
 </head>
 
 <body>
-  <div class="topbar">
+  <!-- Banner -->
+  <header class="topbar">
     <div class="topbar-inner">
       <div class="brand" aria-label="brand">
         <div class="avatar" aria-hidden="true"></div>
         <div>
           <b id="nameTop">Your Name</b>
-          <span id="taglineTop">Research / ML / Vision-Language</span>
+          <span id="taglineTop">Research / ML</span>
         </div>
       </div>
       <nav aria-label="navigation">
-        <a class="navlink" href="#projects">Projects</a>
-        <a class="navlink" href="#publications">Publications</a>
+        <a class="navlink" href="#top">Home</a>
+        <a class="navlink" href="#about">About Me</a>
         <a class="navlink" href="#experience">Experience</a>
-        <a class="navlink" href="#skills">Skills</a>
         <a class="navlink" href="#contact">Contact</a>
       </nav>
     </div>
-  </div>
+  </header>
 
-  <main class="container">
-    <!-- HERO -->
-    <div class="hero">
-      <div class="card hero-main">
-        <h1 id="heroTitle">研究・開発ポートフォリオ</h1>
-        <p id="heroDesc">
-          画像×言語の評価、文化理解ベンチマーク、データセット構築、実験パイプライン整備などを中心に取り組んでいます。
-          ここでは主要プロジェクトと成果物（論文・デモ・コード）をまとめています。
-        </p>
+  <main class="container" id="top">
+    <!-- Landing (minimal info) -->
+    <section class="card landing" aria-label="landing">
+      <h1 id="heroTitle">ポートフォリオ</h1>
+      <p id="heroDesc">
+        研究・開発の概要だけを短く載せ、詳細は About / Experience に分離しています。
+        バナーから各セクションへ移動できます。
+      </p>
 
-        <div class="btns">
-          <a class="btn primary" id="btnGit" href="#" target="_blank" rel="noreferrer">
-            GitHub <code>↗</code>
-          </a>
-          <a class="btn" id="btnCV" href="#" target="_blank" rel="noreferrer">
-            CV / Resume <code>↗</code>
-          </a>
-          <button class="btn" id="btnCopyEmail" type="button" title="Copy email">
-            Emailをコピー <code>⌘C</code>
-          </button>
-        </div>
-
-        <div class="chips" id="chips"></div>
+      <div class="actions">
+        <a class="btn primary" id="btnGit" href="#" target="_blank" rel="noreferrer">GitHub <code>↗</code></a>
+        <a class="btn" id="btnCV" href="#" target="_blank" rel="noreferrer">CV / Resume <code>↗</code></a>
+        <button class="btn" id="btnCopyEmail" type="button">Emailをコピー <code>⌘C</code></button>
+        <a class="btn" href="#experience">経験を見る <code>↓</code></a>
       </div>
 
-      <div class="card hero-side">
-        <div class="quick">
-          <h3>Quick Facts</h3>
-          <div class="row" id="quickFacts"></div>
+      <div class="chips" id="chips"></div>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+      <div class="section-head">
+        <div>
+          <h2>About Me</h2>
+          <p>自己紹介（趣味 / 学歴 / 興味分野など）</p>
         </div>
-        <div class="quick">
-          <h3>Highlights</h3>
-          <div class="row" style="gap:8px; color: var(--muted); font-size: 13px;">
-            <span>• ベンチマーク設計（多段推論 / 説明生成）</span><br/>
-            <span>• データ収集・整備（Web / API / アノテ）</span><br/>
-            <span>• VLM評価パイプライン（再現性・自動集計）</span><br/>
+      </div>
+
+      <div class="card about">
+        <div class="about-grid">
+          <div class="panel">
+            <h3>Summary</h3>
+            <p id="aboutSummary">
+              例：日本の郷土文化理解を測るVQAベンチマークを中心に、データセット構築と評価パイプライン整備を行っています。
+              研究と実装を両方回し、再現性と運用性を重視しています。
+            </p>
+          </div>
+
+          <div class="panel">
+            <h3>Basics</h3>
+            <ul id="aboutBasics">
+              <li>拠点：Japan (JST)</li>
+              <li>関心：Vision-Language / Evaluation / Cultural AI</li>
+              <li>スタック：Python / PyTorch / Docker</li>
+            </ul>
+          </div>
+
+          <!-- 趣味パート -->
+          <div class="panel">
+            <h3>Hobbies</h3>
+            <ul id="aboutHobbies">
+              <li>例：登山・ハイキング</li>
+              <li>例：ご当地グルメ巡り</li>
+              <li>例：論文図のデザイン（アイコン作り）</li>
+            </ul>
+          </div>
+
+          <!-- 学歴パート（高校・大学など） -->
+          <div class="panel">
+            <h3>Education</h3>
+            <ul id="aboutEducation">
+              <li><b>高校：</b>（例）〇〇高等学校</li>
+              <li><b>大学：</b>（例）〇〇大学 〇〇学部</li>
+              <li><b>大学院：</b>（例）〇〇大学院 〇〇研究室</li>
+            </ul>
           </div>
         </div>
       </div>
-    </div>
-
-    <!-- PROJECTS -->
-    <section id="projects">
-      <div class="section-head">
-        <div>
-          <h2>Projects</h2>
-          <p>検索・タグで絞り込みできます（デモ）</p>
-        </div>
-        <div class="filters" role="search" aria-label="project filters">
-          <input class="input" id="q" placeholder="Search (e.g., VQA, dataset, scraping)" />
-          <select id="tag">
-            <option value="all">All tags</option>
-          </select>
-          <select id="sort">
-            <option value="new">Sort: Newest</option>
-            <option value="old">Sort: Oldest</option>
-            <option value="az">Sort: A → Z</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="grid" id="projectGrid"></div>
     </section>
 
-    <!-- PUBLICATIONS (simple demo) -->
-    <section id="publications">
-      <div class="section-head">
-        <div>
-          <h2>Publications / Writing</h2>
-          <p>論文・技術記事・スライドなど</p>
-        </div>
-      </div>
-      <div class="card timeline" id="pubList"></div>
-    </section>
-
-    <!-- EXPERIENCE -->
+    <!-- Experience (compact) -->
     <section id="experience">
       <div class="section-head">
         <div>
           <h2>Experience</h2>
-          <p>研究・開発・運用など（必要に応じて追加）</p>
+          <p>研究・開発プロジェクト（詳細を詰め込みすぎない表示）</p>
         </div>
       </div>
-      <div class="card timeline" id="expList"></div>
-    </section>
 
-    <!-- SKILLS -->
-    <section id="skills">
-      <div class="section-head">
-        <div>
-          <h2>Skills</h2>
-          <p>使う技術をざっくり整理</p>
-        </div>
-      </div>
-      <div class="card timeline" style="padding:16px;">
-        <div class="grid">
-          <div class="project" style="grid-column: span 4;">
-            <div class="proj-top"><h3>ML / Research</h3></div>
-            <p>Vision-Language, VQA, Evaluation, Prompting, Dataset curation</p>
-            <div class="badges" style="margin-top:10px;">
-              <span class="badge green">PyTorch</span>
-              <span class="badge accent">Transformers</span>
-              <span class="badge">W&B</span>
-            </div>
-          </div>
-          <div class="project" style="grid-column: span 4;">
-            <div class="proj-top"><h3>Engineering</h3></div>
-            <p>Data pipelines, scraping, reproducible experiments, automation</p>
-            <div class="badges" style="margin-top:10px;">
-              <span class="badge">Python</span>
-              <span class="badge">uv</span>
-              <span class="badge">Docker</span>
-              <span class="badge">GitHub</span>
-            </div>
-          </div>
-          <div class="project" style="grid-column: span 4;">
-            <div class="proj-top"><h3>Outputs</h3></div>
-            <p>Paper figures, slides, icons, demos for evaluation</p>
-            <div class="badges" style="margin-top:10px;">
-              <span class="badge">LaTeX</span>
-              <span class="badge">PowerPoint</span>
-              <span class="badge">HTML</span>
-            </div>
-          </div>
-        </div>
+      <div class="card xp">
+        <div class="xp-list" id="xpList"></div>
       </div>
     </section>
 
-    <!-- CONTACT -->
+    <!-- Contact -->
     <section id="contact">
       <div class="section-head">
         <div>
@@ -556,186 +354,85 @@
           <p>リンクはデモです。自分のURLに置き換えてください。</p>
         </div>
       </div>
-      <div class="card timeline" style="padding:16px;">
-        <div class="dl">
-          <div class="k">Email</div><div class="v" id="emailText">your.email@example.com</div>
-          <div class="k">GitHub</div><div class="v"><a id="githubLink" href="#" target="_blank" rel="noreferrer">https://github.com/yourname</a></div>
-          <div class="k">Website</div><div class="v"><a id="siteLink" href="#" target="_blank" rel="noreferrer">https://example.com</a></div>
+
+      <div class="card xp" style="padding:16px;">
+        <div class="xp-list">
+          <div class="xp-item">
+            <div class="xp-left">
+              <b>Email</b>
+              <span id="emailText">your.email@example.com</span>
+            </div>
+            <div class="xp-right">
+              <span class="tag">copyable</span>
+            </div>
+          </div>
+          <div class="xp-item">
+            <div class="xp-left">
+              <b>GitHub</b>
+              <span><a id="githubLink" href="#" target="_blank" rel="noreferrer">https://github.com/yourname</a></span>
+            </div>
+            <div class="xp-right">
+              <span class="tag accent">code</span>
+            </div>
+          </div>
+          <div class="xp-item">
+            <div class="xp-left">
+              <b>Website</b>
+              <span><a id="siteLink" href="#" target="_blank" rel="noreferrer">https://example.com</a></span>
+            </div>
+            <div class="xp-right">
+              <span class="tag green">portfolio</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
     <footer>
-      <div>© <span id="year"></span> <span id="nameFoot">Your Name</span> — Built with a single HTML file.</div>
-      <div>Tips: <span class="kbd">/</span> で検索にフォーカス / <span class="kbd">Esc</span> でモーダルを閉じる</div>
+      <div>© <span id="year"></span> <span id="nameFoot">Your Name</span></div>
+      <div>Shortcuts: <span class="kbd">Alt</span> + <span class="kbd">↑</span> で最上部へ</div>
     </footer>
   </main>
 
-  <!-- Project Modal -->
-  <dialog id="modal" aria-label="project detail dialog">
-    <div class="modal-head">
-      <b id="mTitle">Project</b>
-      <button class="close" id="mClose" type="button">Close</button>
-    </div>
-    <div class="modal-body">
-      <p id="mDesc"></p>
-      <div class="dl" id="mDl"></div>
-      <div class="proj-links" id="mLinks" style="margin-top: 14px;"></div>
-    </div>
-  </dialog>
-
   <script>
-    // ====== DEMO DATA (edit here) ======
+    // ==== Minimal demo profile ====
     const profile = {
       name: "千歳 烏丸（Your Name）",
-      tagline: "Vision-Language / Cultural AI / Dataset & Evaluation",
-      heroTitle: "研究・開発ポートフォリオ",
-      heroDesc:
-        "日本の郷土文化理解を測るVQAベンチマーク、データセット構築、評価パイプライン整備などを中心に取り組んでいます。主要プロジェクトと成果物（論文・デモ・コード）をまとめています。",
+      tagline: "Vision-Language / Cultural AI",
+      heroTitle: "ポートフォリオ（Landing）",
+      heroDesc: "トップは軽く、詳細は About / Experience に分けています。上部バナーから移動できます。",
       email: "your.email@example.com",
       github: "https://github.com/yourname",
       cv: "https://example.com/cv.pdf",
       website: "https://example.com",
       chips: [
-        { label: "Main", value: "VQA Benchmark" },
-        { label: "Focus", value: "Japanese Local Culture" },
-        { label: "Stack", value: "Python / PyTorch / Docker" },
-        { label: "Output", value: "Datasets / Figures / Demos" }
+        { label: "Focus", value: "VQA Benchmark" },
+        { label: "Theme", value: "Japanese Local Culture" },
+        { label: "Stack", value: "Python / PyTorch" }
       ],
-      quickFacts: [
-        "Japan (JST)",
-        "Research + Engineering",
-        "Open to internships/collabs"
+      experience: [
+        {
+          title: "郷土文化理解VQAベンチマーク（郷土料理）",
+          when: "2025–",
+          desc: "設問設計（多段推論/説明）、データ整備、評価パイプラインの再現性を重視。",
+          tags: ["VQA", "Dataset", "Evaluation"]
+        },
+        {
+          title: "郷土料理情報の構造化（Web/HTML→JSON）",
+          when: "2025",
+          desc: "ページから主要項目を抽出・正規化し、モデル評価に使える形へ変換。",
+          tags: ["Scraping", "Python"]
+        },
+        {
+          title: "実験設定図・アイコン制作（論文向け）",
+          when: "2026",
+          desc: "PPT/LaTeX連携、ベクタ形式運用で品質を担保。",
+          tags: ["LaTeX", "Slides", "Design"]
+        }
       ]
     };
 
-    // Projects: add as many as you want
-    const projects = [
-      {
-        id: "kyodo-vqa",
-        title: "郷土文化理解VQAベンチマーク（郷土料理）",
-        date: "2025-12",
-        tags: ["VQA", "Dataset", "Culture", "Evaluation"],
-        badges: ["dataset", "multihop", "explanations"],
-        summary:
-          "郷土料理画像に対して、料理名/地域/材料/自然環境/歴史背景など複数観点の問題を設計し、モデルの文化理解を評価。",
-        details: {
-          problem: "地方文化の知識が評価できる日本語VQAベンチマークが不足",
-          approach: "多段推論・説明重視の設問設計、根拠情報の整備、評価指標の設計",
-          output: "JSON形式データセット、問題生成・集計スクリプト、図表・フォームデモ",
-          stack: "Python, PyTorch, Transformers, HTML/Forms"
-        },
-        links: [
-          { label: "Paper (draft)", href: "https://example.com/paper" },
-          { label: "Code", href: "https://github.com/yourname/repo" }
-        ]
-      },
-      {
-        id: "maff-scraper",
-        title: "郷土料理データ収集（MAFF等）スクレイピング/構造化",
-        date: "2025-10",
-        tags: ["Scraping", "Dataset", "Python"],
-        badges: ["parser", "html->json", "automation"],
-        summary:
-          "郷土料理ページから『主な伝承地域・材料・由来・食習』等を抽出し、再利用可能な辞書/JSONへ整形するパイプライン。",
-        details: {
-          problem: "文化情報がHTMLに散在しており、モデル評価に使いにくい",
-          approach: "BeautifulSoupで構造解析、キー設計、例外処理、再現可能な出力",
-          output: "抽出コード、正規化されたJSON、検証用サンプル",
-          stack: "Python, BeautifulSoup, requests"
-        },
-        links: [
-          { label: "Demo JSON", href: "https://example.com/demo.json" }
-        ]
-      },
-      {
-        id: "vlm-eval",
-        title: "VLM評価パイプライン（4択＋集計）",
-        date: "2025-12",
-        tags: ["Evaluation", "VLM", "Engineering"],
-        badges: ["reproducible", "metrics", "batch"],
-        summary:
-          "画像入力→4択回答→ログ/メトリクス集計までを自動化。実験条件を固定して比較しやすい形に整備。",
-        details: {
-          problem: "モデル比較が属人的・再現困難になりがち",
-          approach: "統一フォーマット、ラン・ログ管理、失敗時のデバッグ容易性",
-          output: "実行CLI、結果フォルダ規約、集計スクリプト",
-          stack: "Python, uv, Docker, GitHub"
-        },
-        links: [
-          { label: "How-to (README)", href: "https://example.com/readme" }
-        ]
-      },
-      {
-        id: "icons-figures",
-        title: "論文用 図・アイコン制作（実験設定/データベース×和食）",
-        date: "2026-01",
-        tags: ["Design", "Paper", "Visualization"],
-        badges: ["pptx", "latex", "icons"],
-        summary:
-          "実験設定図の整理、論文内アイコン作成、LaTeX貼り込み品質の改善（PDF運用など）。",
-        details: {
-          problem: "論文図が煩雑・解像度低下しやすい",
-          approach: "図のモジュール化、ベクタ形式(PDF/SVG)活用、PPT→PDF連携",
-          output: "実験設定図テンプレ、アイコンセット、出力手順",
-          stack: "PowerPoint, LaTeX, vector export"
-        },
-        links: [
-          { label: "Slide Template", href: "https://example.com/slides" }
-        ]
-      }
-    ];
-
-    const publications = [
-      { when: "2025", title: "（例）Japanese Local Culture VQA Benchmark (preprint)", note: "arXiv / under preparation", href: "https://example.com" },
-      { when: "2024", title: "（例）Technical blog: dataset curation & evaluation", note: "Medium / Zenn", href: "https://example.com" }
-    ];
-
-    const experience = [
-      { when: "2025–", title: "Research Project / Graduate Lab", note: "VLM evaluation, dataset building, reproducible pipelines" },
-      { when: "2024", title: "Team Project", note: "LLM-based fake review detection (prompting + evaluation)" }
-    ];
-
-    // ====== RENDER ======
     const $ = (s) => document.querySelector(s);
-    const modal = $("#modal");
-
-    function setText(id, text){ const el = $(id); if(el) el.textContent = text; }
-    function setHref(id, href){ const el = $(id); if(el) el.href = href; }
-
-    function initProfile(){
-      setText("#nameTop", profile.name);
-      setText("#taglineTop", profile.tagline);
-      setText("#heroTitle", profile.heroTitle);
-      setText("#heroDesc", profile.heroDesc);
-
-      setHref("#btnGit", profile.github);
-      setHref("#btnCV", profile.cv);
-
-      setText("#emailText", profile.email);
-      setText("#nameFoot", profile.name);
-      setText("#year", new Date().getFullYear());
-
-      setHref("#githubLink", profile.github);
-      setHref("#siteLink", profile.website);
-
-      const chips = $("#chips");
-      chips.innerHTML = profile.chips.map(c =>
-        `<span class="chip"><b>${escapeHtml(c.label)}:</b> ${escapeHtml(c.value)}</span>`
-      ).join("");
-
-      const qf = $("#quickFacts");
-      qf.innerHTML = profile.quickFacts.map(x => `<span class="chip">${escapeHtml(x)}</span>`).join("");
-
-      $("#btnCopyEmail").addEventListener("click", async () => {
-        try{
-          await navigator.clipboard.writeText(profile.email);
-          toast("Copied: " + profile.email);
-        }catch(e){
-          toast("Copy failed (browser permission). Email: " + profile.email);
-        }
-      });
-    }
 
     function escapeHtml(str){
       return String(str)
@@ -746,196 +443,59 @@
         .replaceAll("'","&#39;");
     }
 
-    // ====== FILTERS ======
-    function uniqTags(){
-      const s = new Set();
-      projects.forEach(p => p.tags.forEach(t => s.add(t)));
-      return ["all", ...Array.from(s).sort((a,b)=>a.localeCompare(b))];
-    }
+    function init(){
+      $("#nameTop").textContent = profile.name;
+      $("#taglineTop").textContent = profile.tagline;
+      $("#heroTitle").textContent = profile.heroTitle;
+      $("#heroDesc").textContent = profile.heroDesc;
 
-    function fillTagSelect(){
-      const tag = $("#tag");
-      tag.innerHTML = uniqTags().map(t =>
-        `<option value="${escapeHtml(t)}">${escapeHtml(t === "all" ? "All tags" : t)}</option>`
-      ).join("");
-    }
+      $("#btnGit").href = profile.github;
+      $("#btnCV").href = profile.cv;
 
-    function parseDateYYYYMM(x){
-      // "2026-01" -> comparable number
-      const [y,m] = x.split("-").map(Number);
-      return (y||0)*100 + (m||0);
-    }
+      $("#emailText").textContent = profile.email;
+      $("#githubLink").href = profile.github;
+      $("#githubLink").textContent = profile.github;
+      $("#siteLink").href = profile.website;
+      $("#siteLink").textContent = profile.website;
 
-    function matches(p, query, tag){
-      const q = query.trim().toLowerCase();
-      const inText =
-        !q ||
-        p.title.toLowerCase().includes(q) ||
-        p.summary.toLowerCase().includes(q) ||
-        p.tags.join(" ").toLowerCase().includes(q) ||
-        (p.badges||[]).join(" ").toLowerCase().includes(q);
-      const inTag = (tag === "all") || p.tags.includes(tag);
-      return inText && inTag;
-    }
+      $("#nameFoot").textContent = profile.name;
+      $("#year").textContent = new Date().getFullYear();
 
-    function renderProjects(){
-      const query = $("#q").value || "";
-      const tag = $("#tag").value || "all";
-      const sort = $("#sort").value || "new";
+      // chips
+      $("#chips").innerHTML = profile.chips
+        .map(c => `<span class="chip"><b>${escapeHtml(c.label)}:</b> ${escapeHtml(c.value)}</span>`)
+        .join("");
 
-      let items = projects.filter(p => matches(p, query, tag));
-      if(sort === "new") items.sort((a,b)=>parseDateYYYYMM(b.date)-parseDateYYYYMM(a.date));
-      if(sort === "old") items.sort((a,b)=>parseDateYYYYMM(a.date)-parseDateYYYYMM(b.date));
-      if(sort === "az") items.sort((a,b)=>a.title.localeCompare(b.title));
-
-      const grid = $("#projectGrid");
-      grid.innerHTML = items.map(p => projectCard(p)).join("");
-
-      grid.querySelectorAll("[data-open]").forEach(btn=>{
-        btn.addEventListener("click", () => openProject(btn.getAttribute("data-open")));
-      });
-
-      if(items.length === 0){
-        grid.innerHTML = `<div class="project" style="grid-column: span 12;">
-          <div class="proj-top"><h3>No projects found</h3></div>
-          <p>検索条件を変えてみてください。</p>
-        </div>`;
-      }
-    }
-
-    function projectCard(p){
-      const badges = (p.badges||[]).slice(0,3);
-      const badgeHtml = badges.map((b, i)=>{
-        const cls = i===0 ? "badge accent" : (i===1 ? "badge green" : "badge");
-        return `<span class="${cls}">${escapeHtml(b)}</span>`;
-      }).join("");
-
-      const tags = p.tags.slice(0,3).map(t=>`<span class="badge">${escapeHtml(t)}</span>`).join("");
-
-      return `
-        <article class="project" aria-label="project">
-          <div class="proj-top">
-            <div>
-              <h3>${escapeHtml(p.title)}</h3>
-              <div class="meta">${escapeHtml(p.date)} · ${escapeHtml(p.tags.join(" / "))}</div>
-            </div>
-            <div class="badges" aria-label="badges">
-              ${badgeHtml || tags}
-            </div>
+      // experience (compact)
+      $("#xpList").innerHTML = profile.experience.map(x => `
+        <div class="xp-item">
+          <div class="xp-left">
+            <b>${escapeHtml(x.title)}</b>
+            <span>${escapeHtml(x.when)} · ${escapeHtml(x.desc)}</span>
           </div>
-          <p>${escapeHtml(p.summary)}</p>
-          <div class="proj-links">
-            <button class="mini" type="button" data-open="${escapeHtml(p.id)}">Details</button>
-            ${(p.links||[]).slice(0,2).map(l=>`<a class="mini" href="${escapeHtml(l.href)}" target="_blank" rel="noreferrer">${escapeHtml(l.label)} ↗</a>`).join("")}
-          </div>
-        </article>
-      `;
-    }
-
-    // ====== MODAL ======
-    function openProject(id){
-      const p = projects.find(x => x.id === id);
-      if(!p) return;
-
-      setText("#mTitle", p.title);
-      setText("#mDesc", p.summary);
-
-      const dl = $("#mDl");
-      const d = p.details || {};
-      const rows = [
-        ["problem", d.problem],
-        ["approach", d.approach],
-        ["output", d.output],
-        ["stack", d.stack],
-        ["date", p.date],
-        ["tags", (p.tags||[]).join(", ")]
-      ].filter(([k,v])=>v);
-
-      dl.innerHTML = rows.map(([k,v]) =>
-        `<div class="k">${escapeHtml(k)}</div><div class="v">${escapeHtml(v)}</div>`
-      ).join("");
-
-      const links = $("#mLinks");
-      links.innerHTML = (p.links||[]).map(l =>
-        `<a class="mini" href="${escapeHtml(l.href)}" target="_blank" rel="noreferrer">${escapeHtml(l.label)} ↗</a>`
-      ).join("") || `<span class="mini" aria-disabled="true">No links</span>`;
-
-      modal.showModal();
-    }
-
-    function closeModal(){
-      if(modal.open) modal.close();
-    }
-
-    // ====== TIMELINES ======
-    function renderTimeline(el, items, asLinks=false){
-      el.innerHTML = items.map(x => `
-        <div class="tl-item">
-          <div class="when">${escapeHtml(x.when)}</div>
-          <div class="what">
-            <b>${asLinks && x.href ? `<a href="${escapeHtml(x.href)}" target="_blank" rel="noreferrer">${escapeHtml(x.title)} ↗</a>` : escapeHtml(x.title)}</b>
-            <span>${escapeHtml(x.note||"")}</span>
+          <div class="xp-right">
+            ${(x.tags||[]).map((t,i)=>{
+              const cls = i===0 ? "tag accent" : (i===1 ? "tag green" : "tag");
+              return `<span class="${cls}">${escapeHtml(t)}</span>`;
+            }).join("")}
           </div>
         </div>
       `).join("");
-    }
 
-    // ====== TOAST (tiny) ======
-    let toastTimer;
-    function toast(msg){
-      clearTimeout(toastTimer);
-      let el = document.getElementById("toast");
-      if(!el){
-        el = document.createElement("div");
-        el.id = "toast";
-        el.style.position = "fixed";
-        el.style.left = "50%";
-        el.style.bottom = "18px";
-        el.style.transform = "translateX(-50%)";
-        el.style.padding = "10px 12px";
-        el.style.borderRadius = "12px";
-        el.style.border = "1px solid var(--line)";
-        el.style.background = "rgba(0,0,0,0.55)";
-        el.style.backdropFilter = "blur(10px)";
-        el.style.color = "var(--text)";
-        el.style.fontSize = "13px";
-        el.style.boxShadow = "var(--shadow)";
-        el.style.zIndex = 999;
-        document.body.appendChild(el);
-      }
-      el.textContent = msg;
-      el.style.opacity = "1";
-      toastTimer = setTimeout(()=>{ el.style.opacity="0"; }, 1800);
-    }
-
-    // ====== INIT ======
-    function init(){
-      initProfile();
-      fillTagSelect();
-      renderProjects();
-      renderTimeline($("#pubList"), publications, true);
-      renderTimeline($("#expList"), experience, false);
-
-      $("#q").addEventListener("input", renderProjects);
-      $("#tag").addEventListener("change", renderProjects);
-      $("#sort").addEventListener("change", renderProjects);
-
-      $("#mClose").addEventListener("click", closeModal);
-      modal.addEventListener("click", (e) => {
-        // close when clicking backdrop
-        const rect = modal.getBoundingClientRect();
-        const inside = (e.clientX >= rect.left && e.clientX <= rect.right && e.clientY >= rect.top && e.clientY <= rect.bottom);
-        if(!inside) closeModal();
+      // copy email
+      $("#btnCopyEmail").addEventListener("click", async () => {
+        try{
+          await navigator.clipboard.writeText(profile.email);
+          alert("Copied: " + profile.email);
+        }catch(e){
+          alert("Copy failed. Email: " + profile.email);
+        }
       });
 
-      // Keyboard shortcuts
-      window.addEventListener("keydown", (e) => {
-        if(e.key === "/"){
-          e.preventDefault();
-          $("#q").focus();
-        }
-        if(e.key === "Escape"){
-          closeModal();
+      // shortcut: Alt + ArrowUp => top
+      window.addEventListener("keydown", (e)=>{
+        if(e.altKey && e.key === "ArrowUp"){
+          document.getElementById("top").scrollIntoView({behavior:"smooth"});
         }
       });
     }
