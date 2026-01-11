@@ -9,448 +9,350 @@
   <title>Portfolio | Your Name</title>
   <meta name="description" content="Landing page + About + Experience" />
   <style>
+    /* --- Small custom polish (keep minimal) --- */
     :root{
-      --bg:#0b0f14;
-      --panel:rgba(255,255,255,.06);
-      --panel2:rgba(255,255,255,.08);
-      --text:rgba(255,255,255,.92);
-      --muted:rgba(255,255,255,.70);
-      --line:rgba(255,255,255,.14);
-      --accent:#79b8ff;
-      --accent2:#7ee787;
-      --shadow:0 12px 50px rgba(0,0,0,.35);
-      --r:18px;
-      --mono:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      --sans:ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      --nav-h: 56px;
+      --bg: #0b0f14;
+      --panel: rgba(255,255,255,0.06);
+      --line: rgba(255,255,255,0.14);
+      --text: rgba(255,255,255,0.92);
+      --muted: rgba(255,255,255,0.72);
+      --accent: #79b8ff;
     }
-    *{ box-sizing:border-box; }
     html{ scroll-behavior:smooth; }
     body{
       margin:0;
-      font-family:var(--sans);
-      color:var(--text);
+      color: var(--text);
       background:
-        radial-gradient(1200px 800px at 10% 0%, rgba(121,184,255,0.20), transparent 55%),
-        radial-gradient(900px 700px at 90% 20%, rgba(126,231,135,0.18), transparent 50%),
+        radial-gradient(1100px 700px at 10% 0%, rgba(121,184,255,0.20), transparent 55%),
+        radial-gradient(900px 650px at 90% 20%, rgba(126,231,135,0.16), transparent 50%),
         var(--bg);
-      line-height:1.65;
     }
-    a{ color:var(--accent); text-decoration:none; }
-    a:hover{ text-decoration:underline; }
+    a{ color: var(--accent); }
 
-    /* Top banner */
+    /* fixed navbar */
     .topbar{
-      position:sticky; top:0; z-index:20;
-      backdrop-filter:blur(14px);
-      background:rgba(11,15,20,.55);
-      border-bottom:1px solid var(--line);
+      position: fixed;
+      inset: 0 0 auto 0;
+      height: var(--nav-h);
+      display:flex;
+      align-items:center;
+      backdrop-filter: blur(12px);
+      background: rgba(11,15,20,0.60);
+      border-bottom: 1px solid var(--line);
+      z-index: 1000;
     }
-    .topbar-inner{
-      max-width:1020px;
-      margin:0 auto;
-      padding:12px 16px;
+    .topbar .container{
+      width: 100%;
+      padding-left: .6rem;
+      padding-right: .6rem;
       display:flex;
       align-items:center;
       justify-content:space-between;
-      gap:12px;
+      gap: .6rem;
     }
-    .brand{
-      display:flex; align-items:center; gap:10px;
-      min-width:180px;
-    }
-    .avatar{
-      width:34px; height:34px; border-radius:12px;
-      background:linear-gradient(135deg, rgba(121,184,255,.9), rgba(126,231,135,.8));
-      box-shadow:var(--shadow);
-      flex:0 0 auto;
-    }
-    .brand b{ font-size:14px; letter-spacing:.2px; }
-    .brand span{ display:block; margin-top:-2px; font-size:12px; color:var(--muted); }
+    main{ padding-top: calc(var(--nav-h) + 18px); }
 
-    nav{ display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end; }
-    .navlink{
-      font-size:13px;
-      color:var(--muted);
-      padding:7px 10px;
-      border-radius:999px;
-      border:1px solid transparent;
-    }
-    .navlink:hover{
-      color:var(--text);
-      border-color:var(--line);
-      background:rgba(255,255,255,.04);
-      text-decoration:none;
-    }
+    /* prevent header overlap on anchor jump */
+    section{ scroll-margin-top: calc(var(--nav-h) + 16px); }
 
-    .container{
-      max-width:1020px;
-      margin:0 auto;
-      padding:24px 16px 70px;
-    }
-
-    .card{
-      background:var(--panel);
-      border:1px solid var(--line);
-      border-radius:var(--r);
-      box-shadow:var(--shadow);
-    }
-
-    /* Landing (minimal) */
-    .landing{
-      padding:22px;
-      margin-top:18px;
-    }
-    .landing h1{
-      margin:0 0 8px;
-      font-size:clamp(22px, 3.0vw, 34px);
-      line-height:1.25;
-      letter-spacing:.2px;
-    }
-    .landing p{
-      margin:0 0 14px;
-      color:var(--muted);
-      max-width:72ch;
-    }
-    .actions{ display:flex; gap:10px; flex-wrap:wrap; margin-top:10px; }
-    .btn{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:10px 12px;
-      border-radius:12px;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.04);
-      color:var(--text);
-      font-size:13px;
-      cursor:pointer;
-      text-decoration:none;
-    }
-    .btn:hover{ background:rgba(255,255,255,.06); text-decoration:none; }
-    .btn.primary{
-      border-color:rgba(121,184,255,.35);
-      background:rgba(121,184,255,.12);
-    }
-    .btn code{ font-family:var(--mono); font-size:12px; opacity:.9; }
-
-    .chips{ display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
-    .chip{
-      font-size:12px;
-      padding:6px 10px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.03);
-      color:var(--text);
-      white-space:nowrap;
-    }
-    .chip b{ color:var(--accent2); font-weight:600; }
-
-    /* Sections */
-    section{ margin-top:22px; }
-    .section-head{
-      display:flex;
-      align-items:flex-end;
-      justify-content:space-between;
-      gap:12px;
-      margin:22px 0 10px;
-    }
-    .section-head h2{ margin:0; font-size:16px; letter-spacing:.2px; }
-    .section-head p{ margin:0; color:var(--muted); font-size:13px; }
-
-    /* About layout (light) */
-    .about{
-      padding:16px;
-    }
-    .about-grid{
-      display:grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap:12px;
-    }
-    @media (max-width: 860px){
-      .about-grid{ grid-template-columns:1fr; }
-    }
     .panel{
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.03);
-      border-radius:14px;
-      padding:14px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 14px;
     }
-    .panel h3{
-      margin:0 0 8px;
-      font-size:13px;
-      color:rgba(255,255,255,.82);
-      letter-spacing:.2px;
-    }
-    .panel ul{ margin:0; padding-left:18px; color:var(--muted); font-size:13px; }
-    .panel p{ margin:0; color:var(--muted); font-size:13px; }
+    .muted{ color: var(--muted); }
 
-    /* Experience (compact cards) */
-    .xp{
-      padding:16px;
-    }
-    .xp-list{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap:10px;
-    }
-    .xp-item{
-      border:1px solid var(--line);
-      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      border-radius:14px;
-      padding:12px 12px;
-      display:flex;
-      justify-content:space-between;
-      gap:12px;
-      align-items:flex-start;
-    }
-    .xp-left b{ display:block; font-size:14px; letter-spacing:.2px; }
-    .xp-left span{ display:block; color:var(--muted); font-size:12px; margin-top:2px; }
-    .xp-right{
-      display:flex; gap:6px; flex-wrap:wrap; justify-content:flex-end;
-      max-width: 45%;
-    }
-    @media (max-width: 860px){
-      .xp-item{ flex-direction:column; }
-      .xp-right{ max-width:100%; justify-content:flex-start; }
-    }
-    .tag{
-      font-family:var(--mono);
-      font-size:11px;
-      padding:5px 8px;
+    .brand-dot{
+      display:inline-block;
+      width:10px;height:10px;
       border-radius:999px;
-      border:1px solid var(--line);
-      background:rgba(0,0,0,.16);
-      color:rgba(255,255,255,.82);
-      white-space:nowrap;
+      background: linear-gradient(135deg, #79b8ff, #7ee787);
+      margin-right:.4rem;
+      vertical-align:middle;
     }
-    .tag.accent{ border-color:rgba(121,184,255,.35); color:rgba(179,220,255,.95); }
-    .tag.green{ border-color:rgba(126,231,135,.35); color:rgba(188,255,202,.95); }
 
-    footer{
-      margin-top:28px;
-      padding-top:16px;
-      border-top:1px solid var(--line);
-      color:var(--muted);
-      font-size:12px;
-      display:flex;
-      justify-content:space-between;
-      flex-wrap:wrap;
-      gap:10px;
+    /* compact cards */
+    .card.panel{ overflow:hidden; }
+    .card-header{ border-bottom: 1px solid rgba(255,255,255,0.08); }
+
+    /* active nav state */
+    .btn.btn-link.is-active{
+      font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 4px;
     }
-    .kbd{
-      font-family:var(--mono);
-      border:1px solid var(--line);
-      padding:2px 7px;
-      border-radius:9px;
-      background:rgba(255,255,255,.03);
-      color:rgba(255,255,255,.78);
-    }
+
+    /* make Spectre default text color readable on dark bg */
+    .card-title, .card-subtitle, .menu .menu-item, .menu .menu-item a { color: var(--text); }
+    .card-subtitle, .text-gray, .label.label-secondary { color: var(--muted); }
   </style>
 </head>
 
 <body>
-  <!-- Banner -->
+  <!-- NAVBAR -->
   <header class="topbar">
-    <div class="topbar-inner">
-      <div class="brand" aria-label="brand">
-        <div class="avatar" aria-hidden="true"></div>
-        <div>
-          <b id="nameTop">Your Name</b>
-          <span id="taglineTop">Research / ML</span>
-        </div>
+    <div class="container grid-lg">
+      <div class="navbar">
+        <section class="navbar-section">
+          <span class="brand-dot" aria-hidden="true"></span>
+          <strong id="nameTop">Your Name</strong>
+          <span class="text-gray" style="margin-left:.5rem;" id="taglineTop">Vision-Language / Cultural AI</span>
+        </section>
+
+        <section class="navbar-section">
+          <a class="btn btn-link" href="#home" id="nav-home">Home</a>
+          <a class="btn btn-link" href="#about" id="nav-about">About</a>
+          <a class="btn btn-link" href="#experience" id="nav-exp">Experience</a>
+          <a class="btn btn-link" href="#contact" id="nav-contact">Contact</a>
+        </section>
       </div>
-      <nav aria-label="navigation">
-        <a class="navlink" href="#top">Home</a>
-        <a class="navlink" href="#about">About Me</a>
-        <a class="navlink" href="#experience">Experience</a>
-        <a class="navlink" href="#contact">Contact</a>
-      </nav>
     </div>
   </header>
 
-  <main class="container" id="top">
-    <!-- Landing (minimal info) -->
-    <section class="card landing" aria-label="landing">
-      <h1 id="heroTitle">ポートフォリオ</h1>
-      <p id="heroDesc">
-        研究・開発の概要だけを短く載せ、詳細は About / Experience に分離しています。
-        バナーから各セクションへ移動できます。
-      </p>
+  <main class="container grid-lg">
+    <!-- LANDING (minimal) -->
+    <section id="home">
+      <div class="panel" style="padding: 1rem;">
+        <h3 style="margin:.2rem 0 .4rem;">研究・開発ポートフォリオ</h3>
+        <p class="muted" style="margin:0 0 .8rem; max-width: 72ch;">
+          ランディングは情報量を絞って、詳細は下の About / Experience に分けています。
+          上部バナーからすぐ飛べます。
+        </p>
 
-      <div class="actions">
-        <a class="btn primary" id="btnGit" href="#" target="_blank" rel="noreferrer">GitHub <code>↗</code></a>
-        <a class="btn" id="btnCV" href="#" target="_blank" rel="noreferrer">CV / Resume <code>↗</code></a>
-        <button class="btn" id="btnCopyEmail" type="button">Emailをコピー <code>⌘C</code></button>
-        <a class="btn" href="#experience">経験を見る <code>↓</code></a>
-      </div>
-
-      <div class="chips" id="chips"></div>
-    </section>
-
-    <!-- About -->
-    <section id="about">
-      <div class="section-head">
-        <div>
-          <h2>About Me</h2>
-          <p>自己紹介（趣味 / 学歴 / 興味分野など）</p>
+        <div class="columns" style="margin-top:.2rem;">
+          <div class="column col-8 col-md-12">
+            <div class="chips">
+              <span class="chip">Focus: VQA Benchmark</span>
+              <span class="chip">Theme: Japanese Local Culture</span>
+              <span class="chip">Stack: Python / PyTorch</span>
+            </div>
+          </div>
+          <div class="column col-4 col-md-12" style="text-align:right;">
+            <a class="btn btn-primary" id="btnGit" href="#" target="_blank" rel="noreferrer">GitHub</a>
+            <a class="btn" id="btnCV" href="#" target="_blank" rel="noreferrer">CV</a>
+            <a class="btn" href="#experience">Go →</a>
+          </div>
         </div>
       </div>
+    </section>
 
-      <div class="card about">
-        <div class="about-grid">
-          <div class="panel">
-            <h3>Summary</h3>
-            <p id="aboutSummary">
-              例：日本の郷土文化理解を測るVQAベンチマークを中心に、データセット構築と評価パイプライン整備を行っています。
-              研究と実装を両方回し、再現性と運用性を重視しています。
+    <!-- ABOUT -->
+    <section id="about" style="margin-top: 1.2rem;">
+      <div class="columns">
+        <div class="column col-12">
+          <div class="panel" style="padding: 1rem;">
+            <div class="columns">
+              <div class="column col-8 col-md-12">
+                <h4 style="margin:.2rem 0 .4rem;">About Me</h4>
+                <p class="muted" style="margin:0; max-width: 80ch;" id="aboutSummary">
+                  例：日本の郷土文化理解を測るVQAベンチマークを中心に、データセット構築と評価パイプライン整備を行っています。
+                  研究と実装を両方回し、再現性と運用性を重視しています。
+                </p>
+              </div>
+              <div class="column col-4 col-md-12" style="text-align:right;">
+                <span class="label label-secondary">Hobbies / Education included</span>
+              </div>
+            </div>
+
+            <div class="columns" style="margin-top:.9rem;">
+              <div class="column col-4 col-md-12">
+                <div class="card panel">
+                  <div class="card-header">
+                    <div class="card-title h6">Basics</div>
+                    <div class="card-subtitle muted">短くまとめる</div>
+                  </div>
+                  <div class="card-body">
+                    <ul class="muted" style="margin:0; padding-left: 1.1rem;">
+                      <li>Japan (JST)</li>
+                      <li>Interests: VLM / Evaluation</li>
+                      <li>Tools: Python / Docker</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="column col-4 col-md-12">
+                <div class="card panel">
+                  <div class="card-header">
+                    <div class="card-title h6">Hobbies</div>
+                    <div class="card-subtitle muted">趣味</div>
+                  </div>
+                  <div class="card-body">
+                    <ul class="muted" style="margin:0; padding-left: 1.1rem;">
+                      <li>例：登山・ハイキング</li>
+                      <li>例：ご当地グルメ</li>
+                      <li>例：図・アイコン作成</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="column col-4 col-md-12">
+                <div class="card panel">
+                  <div class="card-header">
+                    <div class="card-title h6">Education</div>
+                    <div class="card-subtitle muted">高校 / 大学など</div>
+                  </div>
+                  <div class="card-body">
+                    <ul class="muted" style="margin:0; padding-left: 1.1rem;">
+                      <li><b>高校</b>：〇〇高等学校</li>
+                      <li><b>大学</b>：〇〇大学 〇〇学部</li>
+                      <li><b>大学院</b>：〇〇大学院 〇〇研究室</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+            </div><!-- columns -->
+          </div><!-- panel -->
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" style="margin-top: 1.2rem;">
+      <div class="panel" style="padding: 1rem;">
+        <div class="columns">
+          <div class="column col-8 col-md-12">
+            <h4 style="margin:.2rem 0 .4rem;">Experience</h4>
+            <p class="muted" style="margin:0; max-width: 80ch;">
+              研究・開発プロジェクトは「短い1行＋タグ」だけにして、情報量を抑えています。
             </p>
           </div>
-
-          <div class="panel">
-            <h3>Basics</h3>
-            <ul id="aboutBasics">
-              <li>拠点：Japan (JST)</li>
-              <li>関心：Vision-Language / Evaluation / Cultural AI</li>
-              <li>スタック：Python / PyTorch / Docker</li>
-            </ul>
+          <div class="column col-4 col-md-12" style="text-align:right;">
+            <span class="label label-secondary">Compact list</span>
           </div>
+        </div>
 
-          <!-- 趣味パート -->
-          <div class="panel">
-            <h3>Hobbies</h3>
-            <ul id="aboutHobbies">
-              <li>例：登山・ハイキング</li>
-              <li>例：ご当地グルメ巡り</li>
-              <li>例：論文図のデザイン（アイコン作り）</li>
-            </ul>
+        <div id="xpList" style="margin-top:.9rem;"></div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" style="margin-top: 1.2rem; margin-bottom: 2rem;">
+      <div class="panel" style="padding: 1rem;">
+        <h4 style="margin:.2rem 0 .6rem;">Contact</h4>
+
+        <div class="columns">
+          <div class="column col-8 col-md-12">
+            <p class="muted" style="margin:0;">
+              Email: <span id="emailText">your.email@example.com</span><br/>
+              GitHub: <a id="githubLink" href="#" target="_blank" rel="noreferrer">https://github.com/yourname</a><br/>
+              Website: <a id="siteLink" href="#" target="_blank" rel="noreferrer">https://example.com</a>
+            </p>
           </div>
-
-          <!-- 学歴パート（高校・大学など） -->
-          <div class="panel">
-            <h3>Education</h3>
-            <ul id="aboutEducation">
-              <li><b>高校：</b>（例）〇〇高等学校</li>
-              <li><b>大学：</b>（例）〇〇大学 〇〇学部</li>
-              <li><b>大学院：</b>（例）〇〇大学院 〇〇研究室</li>
-            </ul>
+          <div class="column col-4 col-md-12" style="text-align:right;">
+            <button class="btn" id="btnCopyEmail" type="button">Copy Email</button>
+            <a class="btn" href="#home">Back to top</a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Experience (compact) -->
-    <section id="experience">
-      <div class="section-head">
-        <div>
-          <h2>Experience</h2>
-          <p>研究・開発プロジェクト（詳細を詰め込みすぎない表示）</p>
-        </div>
-      </div>
-
-      <div class="card xp">
-        <div class="xp-list" id="xpList"></div>
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact">
-      <div class="section-head">
-        <div>
-          <h2>Contact</h2>
-          <p>リンクはデモです。自分のURLに置き換えてください。</p>
-        </div>
-      </div>
-
-      <div class="card xp" style="padding:16px;">
-        <div class="xp-list">
-          <div class="xp-item">
-            <div class="xp-left">
-              <b>Email</b>
-              <span id="emailText">your.email@example.com</span>
-            </div>
-            <div class="xp-right">
-              <span class="tag">copyable</span>
-            </div>
-          </div>
-          <div class="xp-item">
-            <div class="xp-left">
-              <b>GitHub</b>
-              <span><a id="githubLink" href="#" target="_blank" rel="noreferrer">https://github.com/yourname</a></span>
-            </div>
-            <div class="xp-right">
-              <span class="tag accent">code</span>
-            </div>
-          </div>
-          <div class="xp-item">
-            <div class="xp-left">
-              <b>Website</b>
-              <span><a id="siteLink" href="#" target="_blank" rel="noreferrer">https://example.com</a></span>
-            </div>
-            <div class="xp-right">
-              <span class="tag green">portfolio</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <footer>
-      <div>© <span id="year"></span> <span id="nameFoot">Your Name</span></div>
-      <div>Shortcuts: <span class="kbd">Alt</span> + <span class="kbd">↑</span> で最上部へ</div>
-    </footer>
+    <p class="muted" style="font-size:12px; margin-top: 0;">
+      © <span id="year"></span> <span id="nameFoot">Your Name</span>
+    </p>
   </main>
 
   <script>
-    // ==== Minimal demo profile ====
+    // ====== Edit here ======
     const profile = {
       name: "千歳 烏丸（Your Name）",
       tagline: "Vision-Language / Cultural AI",
-      heroTitle: "ポートフォリオ（Landing）",
-      heroDesc: "トップは軽く、詳細は About / Experience に分けています。上部バナーから移動できます。",
       email: "your.email@example.com",
       github: "https://github.com/yourname",
       cv: "https://example.com/cv.pdf",
       website: "https://example.com",
-      chips: [
-        { label: "Focus", value: "VQA Benchmark" },
-        { label: "Theme", value: "Japanese Local Culture" },
-        { label: "Stack", value: "Python / PyTorch" }
-      ],
+      aboutSummary:
+        "例：日本の郷土文化理解を測るVQAベンチマークを中心に、データセット構築と評価パイプライン整備を行っています。研究と実装を両方回し、再現性と運用性を重視しています。",
       experience: [
         {
           title: "郷土文化理解VQAベンチマーク（郷土料理）",
           when: "2025–",
-          desc: "設問設計（多段推論/説明）、データ整備、評価パイプラインの再現性を重視。",
+          desc: "多段推論/説明重視の設問設計、データ整備、評価パイプライン",
           tags: ["VQA", "Dataset", "Evaluation"]
         },
         {
           title: "郷土料理情報の構造化（Web/HTML→JSON）",
           when: "2025",
-          desc: "ページから主要項目を抽出・正規化し、モデル評価に使える形へ変換。",
+          desc: "抽出・正規化・例外処理で再利用可能なデータへ",
           tags: ["Scraping", "Python"]
         },
         {
-          title: "実験設定図・アイコン制作（論文向け）",
+          title: "論文用 図・アイコン制作（PPT/LaTeX）",
           when: "2026",
-          desc: "PPT/LaTeX連携、ベクタ形式運用で品質を担保。",
+          desc: "ベクタ出力（PDF）中心で品質担保",
           tags: ["LaTeX", "Slides", "Design"]
         }
       ]
     };
 
+    // ====== Helpers ======
     const $ = (s) => document.querySelector(s);
+    const esc = (x) => String(x)
+      .replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;")
+      .replaceAll('"',"&quot;").replaceAll("'","&#39;");
 
-    function escapeHtml(str){
-      return String(str)
-        .replaceAll("&","&amp;")
-        .replaceAll("<","&lt;")
-        .replaceAll(">","&gt;")
-        .replaceAll('"',"&quot;")
-        .replaceAll("'","&#39;");
+    function renderExperience(){
+      const root = $("#xpList");
+      root.innerHTML = `
+        <div class="columns">
+          ${profile.experience.map(x => `
+            <div class="column col-12" style="margin-bottom:.6rem;">
+              <div class="card panel">
+                <div class="card-body">
+                  <div class="columns">
+                    <div class="column col-9 col-md-12">
+                      <div style="display:flex; gap:.5rem; flex-wrap:wrap; align-items:baseline;">
+                        <strong>${esc(x.title)}</strong>
+                        <span class="label label-secondary">${esc(x.when)}</span>
+                      </div>
+                      <div class="muted" style="margin-top:.25rem; font-size:13px;">
+                        ${esc(x.desc)}
+                      </div>
+                    </div>
+                    <div class="column col-3 col-md-12" style="text-align:right;">
+                      ${x.tags.map(t => `<span class="label" style="margin-left:.25rem;">${esc(t)}</span>`).join("")}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          `).join("")}
+        </div>
+      `;
     }
 
-    function init(){
+    function setActiveNavByScroll(){
+      const ids = ["home","about","experience","contact"];
+      const nav = {
+        home: $("#nav-home"),
+        about: $("#nav-about"),
+        experience: $("#nav-exp"),
+        contact: $("#nav-contact"),
+      };
+
+      function clear(){
+        Object.values(nav).forEach(a => a && a.classList.remove("is-active"));
+      }
+
+      const y = window.scrollY + 70; // offset
+      let current = "home";
+      for(const id of ids){
+        const el = document.getElementById(id);
+        if(!el) continue;
+        if(el.offsetTop <= y) current = id;
+      }
+      clear();
+      if(nav[current]) nav[current].classList.add("is-active");
+    }
+
+    // ====== Init ======
+    document.addEventListener("DOMContentLoaded", ()=>{
       $("#nameTop").textContent = profile.name;
       $("#taglineTop").textContent = profile.tagline;
-      $("#heroTitle").textContent = profile.heroTitle;
-      $("#heroDesc").textContent = profile.heroDesc;
+      $("#aboutSummary").textContent = profile.aboutSummary;
 
       $("#btnGit").href = profile.github;
       $("#btnCV").href = profile.cv;
@@ -461,32 +363,10 @@
       $("#siteLink").href = profile.website;
       $("#siteLink").textContent = profile.website;
 
-      $("#nameFoot").textContent = profile.name;
       $("#year").textContent = new Date().getFullYear();
+      $("#nameFoot").textContent = profile.name;
 
-      // chips
-      $("#chips").innerHTML = profile.chips
-        .map(c => `<span class="chip"><b>${escapeHtml(c.label)}:</b> ${escapeHtml(c.value)}</span>`)
-        .join("");
-
-      // experience (compact)
-      $("#xpList").innerHTML = profile.experience.map(x => `
-        <div class="xp-item">
-          <div class="xp-left">
-            <b>${escapeHtml(x.title)}</b>
-            <span>${escapeHtml(x.when)} · ${escapeHtml(x.desc)}</span>
-          </div>
-          <div class="xp-right">
-            ${(x.tags||[]).map((t,i)=>{
-              const cls = i===0 ? "tag accent" : (i===1 ? "tag green" : "tag");
-              return `<span class="${cls}">${escapeHtml(t)}</span>`;
-            }).join("")}
-          </div>
-        </div>
-      `).join("");
-
-      // copy email
-      $("#btnCopyEmail").addEventListener("click", async () => {
+      $("#btnCopyEmail").addEventListener("click", async ()=>{
         try{
           await navigator.clipboard.writeText(profile.email);
           alert("Copied: " + profile.email);
@@ -495,14 +375,10 @@
         }
       });
 
-      // shortcut: Alt + ArrowUp => top
-      window.addEventListener("keydown", (e)=>{
-        if(e.altKey && e.key === "ArrowUp"){
-          document.getElementById("top").scrollIntoView({behavior:"smooth"});
-        }
-      });
-    }
-    init();
+      renderExperience();
+      setActiveNavByScroll();
+      window.addEventListener("scroll", setActiveNavByScroll, { passive: true });
+    });
   </script>
 </body>
 </html>
