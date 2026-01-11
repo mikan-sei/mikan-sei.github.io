@@ -8,85 +8,6 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Portfolio | Your Name</title>
   <meta name="description" content="Landing page + About + Experience" />
-  <style>
-    /* --- Small custom polish (keep minimal) --- */
-    :root{
-      --nav-h: 56px;
-      --bg: #0b0f14;
-      --panel: rgba(255,255,255,0.06);
-      --line: rgba(255,255,255,0.14);
-      --text: rgba(255,255,255,0.92);
-      --muted: rgba(255,255,255,0.72);
-      --accent: #79b8ff;
-    }
-    html{ scroll-behavior:smooth; }
-    body{
-      margin:0;
-      color: var(--text);
-      background:
-        radial-gradient(1100px 700px at 10% 0%, rgba(121,184,255,0.20), transparent 55%),
-        radial-gradient(900px 650px at 90% 20%, rgba(126,231,135,0.16), transparent 50%),
-        var(--bg);
-    }
-    a{ color: var(--accent); }
-
-    /* fixed navbar */
-    .topbar{
-      position: fixed;
-      inset: 0 0 auto 0;
-      height: var(--nav-h);
-      display:flex;
-      align-items:center;
-      backdrop-filter: blur(12px);
-      background: rgba(11,15,20,0.60);
-      border-bottom: 1px solid var(--line);
-      z-index: 1000;
-    }
-    .topbar .container{
-      width: 100%;
-      padding-left: .6rem;
-      padding-right: .6rem;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap: .6rem;
-    }
-    main{ padding-top: calc(var(--nav-h) + 18px); }
-
-    /* prevent header overlap on anchor jump */
-    section{ scroll-margin-top: calc(var(--nav-h) + 16px); }
-
-    .panel{
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: 14px;
-    }
-    .muted{ color: var(--muted); }
-
-    .brand-dot{
-      display:inline-block;
-      width:10px;height:10px;
-      border-radius:999px;
-      background: linear-gradient(135deg, #79b8ff, #7ee787);
-      margin-right:.4rem;
-      vertical-align:middle;
-    }
-
-    /* compact cards */
-    .card.panel{ overflow:hidden; }
-    .card-header{ border-bottom: 1px solid rgba(255,255,255,0.08); }
-
-    /* active nav state */
-    .btn.btn-link.is-active{
-      font-weight: 600;
-      text-decoration: underline;
-      text-underline-offset: 4px;
-    }
-
-    /* make Spectre default text color readable on dark bg */
-    .card-title, .card-subtitle, .menu .menu-item, .menu .menu-item a { color: var(--text); }
-    .card-subtitle, .text-gray, .label.label-secondary { color: var(--muted); }
-  </style>
 </head>
 
 <body>
@@ -164,9 +85,9 @@
                   </div>
                   <div class="card-body">
                     <ul class="muted" style="margin:0; padding-left: 1.1rem;">
-                      <li>Japan (JST)</li>
-                      <li>Interests: VLM / Evaluation</li>
-                      <li>Tools: Python / Docker</li>
+                      <li>Sendai, Japan (JST)</li>
+                      <li>Interests:  VLM / Evaluation</li>
+                      <li>Tools:      Python / Docker</li>
                     </ul>
                   </div>
                 </div>
